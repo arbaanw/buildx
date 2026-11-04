@@ -1,0 +1,2 @@
+import {describe,it,expect} from 'vitest';import {initialData} from '../services/demo';import {urgency} from './urgency';
+describe('urgency',()=>{it('scores critical operational problems above healthy departments',()=>{expect(urgency(initialData,'d2').score).toBeGreaterThan(urgency(initialData,'d4').score)});it('maps the highest score to critical',()=>{expect(urgency(initialData,'d2').level).toBe('critical')})});

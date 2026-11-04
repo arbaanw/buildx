@@ -1,0 +1,16 @@
+export type Role='executive'|'head'|'employee';
+export type Severity='low'|'medium'|'high'|'critical';
+export type Status='open'|'in_progress'|'resolved';
+export type Point={x:number;y:number};
+export type Room={id:string;name:string;departmentId:string|null;roomType:'department'|'meeting'|'corridor'|'other';polygon:Point[];color:string};
+export type Wall={id:string;start:Point;end:Point};
+export type Door={id:string;wallId:string;position:number};
+export type OfficeObject={id:string;roomId:string;type:'desk'|'table'|'plant';x:number;y:number};
+export type Layout={id:string;organizationId:string;name:string;width:number;height:number;rooms:Room[];walls:Wall[];doors:Door[];objects:OfficeObject[];referenceImage?:string};
+export type Department={id:string;name:string;head:string;members:string[]};
+export type Project={id:string;departmentId:string;name:string;description:string;owner:string;deadline:string;status:'active'|'completed'|'paused';milestones:{id:string;name:string;due:string;done:boolean}[]};
+export type Task={id:string;departmentId:string;projectId:string;title:string;assignee:string;due:string;status:'todo'|'doing'|'done'};
+export type Issue={id:string;departmentId:string;projectId?:string;title:string;description:string;severity:Severity;status:Status;reporter:string;createdAt:string;updatedAt:string;escalated:boolean;resolution?:string};
+export type Meeting={id:string;departmentId:string;purpose:string;date:string;participants:string[]};
+export type Note={id:string;departmentId:string;text:string;createdAt:string};
+export type Data={organization:{id:string;name:string};layout:Layout;departments:Department[];projects:Project[];tasks:Task[];issues:Issue[];meetings:Meeting[];notes:Note[]};
